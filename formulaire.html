@@ -1,12 +1,15 @@
 <html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="form.css">
+	</head>
 	<body>
 		<form method="POST" action="verif.php">
-		<input type="text" name="nom"/>
-		<input type="text" name="prenom"/>
-		<input type="text" name="email"/>
-		<input type="password" name="mdp"/>
-		<input type="password" name="mdp2"/>
-		<input type="submit" />
+		<label for="nom">Nom : </label><input type="text" name="nom" id="nom"/><br/>
+		<label for="prenom">Prenom : </label><input type="text" name="prenom" id="prenom"/><br/>
+		<label for="email">email : </label><input type="text" name="email" id="email"/><br/>
+		<label for="mdp">mdp: </label><input type="password" name="mdp" id="mdp"/><br/>
+		<label for="mdp2">Repetez : </label><input type="password" name="mdp2" id="mdp2"/><br/>
+		<input type="submit"/>
 		</form>
 	</body>
 </html>
