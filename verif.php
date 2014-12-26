@@ -27,9 +27,20 @@
 				if(strcmp($mdp,$mdp2) == 0)
 				{
 					#on crypte le mdp et on ajoute
-					$mdp = sha1(md5("sel1") + $mdp + md5("sel2"));
+					$mdp = sha1($mdp);
 	                $res = pg_prepare($vConn,"insert","INSERT INTO UTILISATEUR(nom,prenom,email,mdp) VALUES($1, $2, $3, $4)");
 	                $res = pg_execute($vConn,"insert",array($nom,$prenom,$email,$mdp));
+	                #s'il s'incrit en tant qu'auteur
+	                if(isset($_POST['auteur']))
+	                {
+	                	#on récupère son id
+	                	$res = pg_prepare($vConn,"id","SELECT id_utilisateur AS id FROM UTILISATEUR WHERE email=$1");
+	                	$res = pg_execute($vConn,"id",array($email));
+	                	$data = pg_fetch_object($res);
+	                	#on l'ajoute aux auteurs
+	                	$res = pg_prepare($vConn,"auteur","INSERT INTO auteur VALUES ($1)");
+	                	$res = pg_execute($vConn,"auteur",array($data->id));
+	                }
 	                echo "inscription reussie\n";
 				}
 				else
