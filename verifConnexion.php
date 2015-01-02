@@ -1,6 +1,12 @@
 <?php
 	session_start();
 	include 'conBD.php';
+	$vHost = "localhost";
+	$vPort = "5432";
+	$vDbname = "postgres";
+	$vUser = "gregory";
+	$vPassword = "2nd1094600";
+	$vConn = connexion($vHost,$vPort,$vDbname,$vUser,$vPassword);
 	#à inclure lors du rassemblement.
 	header ("location: messConn.php");
 	if(isset($_POST['email']) && isset($_POST['mdp']))

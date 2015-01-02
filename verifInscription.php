@@ -1,6 +1,12 @@
 <?php
 	include 'conBD.php';
-
+	$vHost = "localhost";
+	$vPort = "5432";
+	$vDbname = "postgres";
+	$vUser = "gregory";
+	$vPassword = "2nd1094600";
+	$vConn = connexion($vHost,$vPort,$vDbname,$vUser,$vPassword);
+	
 	if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['mdp2']))
 	{
 		#sleep : ralenti considérablement les attaques bruteforce

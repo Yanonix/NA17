@@ -4,8 +4,8 @@
 -->
 <?php
 	session_start();
-	#remplacer plus tard par une redirection sur l'accueil.
-	header ("Refresh: 5;URL=formulaireConnexion.html");
+	#remplacer plus tard par une redirection sur l'accueil général.
+	header ("Refresh: 5;URL=./accueilAdmin.php");
 ?>
 <html>
 	<head>
@@ -14,7 +14,7 @@
 	<body>
 	<?php
 		echo $_SESSION['message'];
-		session_unset($_SESSION['message']);
+		unset($_SESSION['message']);
 	?>
 	</body>
 </html>
