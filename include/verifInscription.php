@@ -1,11 +1,4 @@
 <?php
-	include 'conBD.php';
-	$vHost = "localhost";
-	$vPort = "5432";
-	$vDbname = "postgres";
-	$vUser = "gregory";
-	$vPassword = "2nd1094600";
-	$vConn = connexion($vHost,$vPort,$vDbname,$vUser,$vPassword);
 	
 	if(isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) && isset($_POST['mdp']) && isset($_POST['mdp2']))
 	{
@@ -30,7 +23,7 @@
 			if($data->nb == 0)
 			{
 				#si les mots de passes sont identiques
-				if(strcmp($mdp,$mdp2) == 0)
+				if(strcmp($mdp,$mdp2) == 0 && $mdp != "")
 				{
 					#on crypte le mdp et on ajoute
 					$mdp = sha1($mdp);
@@ -47,26 +40,23 @@
 	                	$res = pg_prepare($vConn,"auteur","INSERT INTO auteur VALUES ($1)");
 	                	$res = pg_execute($vConn,"auteur",array($data->id));
 	                }
-	                echo "inscription reussie\n";
+	                MessagesService::ajouter(MessagesService::OK, "Inscription réussite !");
+	                redirection("index.php");
 				}
 				else
 				{
-					echo "les mots de passes saisis sont differents\n";
+					MessagesService::ajouter(MessagesService::ERREUR, "Les mots de passes saisis sont differents ou sont vides");
 				}
 			}
 			else
 			{
-				echo "cette adresse email est deja utilisee\n";
+				MessagesService::ajouter(MessagesService::ERREUR, "Cette adresse email est deja utilisée");
 			}
 		}
 		else
 		{
-			echo "l'adresse mail saisie n'est pas valide \n";
+			MessagesService::ajouter(MessagesService::ERREUR, "L'adresse mail saisie n'est pas valide");
 		}
 	}
-	else
-	{
-		echo "probleme de remplissage du formulaire\n";
-	}
-	pg_close($vConn);
+
 ?>

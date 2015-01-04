@@ -1,0 +1,59 @@
+label
+{
+	display: block;
+	width: 150px;
+	float: left;
+}
+
+.message_0, .message_1, .message_2
+{
+	padding: 5px;
+	margin: 5px;
+}
+
+.message_0 /* SUCCESS */
+{
+	background-color: rgba(0,255,0,0.4);
+}
+.message_0:before
+{
+	color:rgb(0,255,0);
+	content: "✓";
+	padding-right: 5px;
+}
+
+.message_1 /* ERROR */
+{
+	background-color: rgba(255,0,0,0.4);
+}
+.message_1:before
+{
+	color:rgb(255,0,0);
+	content: "❌";
+	padding-right: 5px;
+}
+
+.message_2 /* INFO */
+{
+	background-color: rgba(0,0,255,0.4);
+}
+.message_2:before
+{
+	color:rgb(0,0,255);
+	content: "#";
+	padding-right: 5px;
+}
+
+.credit {
+	color: gray;
+	text-align: right;
+	font-style: italic;
+}
+
+nav li {
+	display: inline-block;
+}
+nav li:after {
+	content: ' |';
+	padding: 0 5px;
+}
