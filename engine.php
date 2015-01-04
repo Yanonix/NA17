@@ -72,6 +72,10 @@ function redirection($url)
 	header("location: ".$url);
 	exit();
 }
+function home()
+{
+	redirection("index.php");
+}
 
 }
 ?>
